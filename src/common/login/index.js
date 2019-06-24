@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 
 const LoginComponent = (props) => {
-  return (
+  return props.isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <View>
       <TextInput
         placeholder="email"
@@ -31,6 +33,7 @@ LoginComponent.propTypes = {
   password: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default LoginComponent;
