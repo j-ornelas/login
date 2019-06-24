@@ -13,6 +13,7 @@ export default class App extends React.Component {
   }
 
   exampleOnSubmit() {
+
     console.log(`
       The current email is ${this.state.email}.
       The current password is ${this.state.password}.
@@ -26,7 +27,7 @@ export default class App extends React.Component {
           email={this.state.email}
           password={this.state.password}
           onChange={(prop, val) => this.exampleOnChange(prop, val)}
-          onSubmit={this.exampleOnSubmit}
+          onSubmit={this.exampleOnSubmit.bind(this)}
         />
       </View>
     );
