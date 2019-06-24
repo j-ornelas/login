@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import { LoginComponent } from './src/common';
 
 export default class App extends React.Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    isLoading: false
   }
 
   exampleOnChange(prop, value) {
@@ -13,11 +14,16 @@ export default class App extends React.Component {
   }
 
   exampleOnSubmit() {
-
-    console.log(`
-      The current email is ${this.state.email}.
-      The current password is ${this.state.password}.
-    `);
+    this.setState({ isLoading: true });
+    // Dev note: this mimics a network request delay.
+    setTimeout(() => {
+      Alert.alert(`
+        The current email is ${this.state.email}.\n
+        The current password is\n
+        ${this.state.password.length} characters long.
+      `)
+      this.setState({ isLoading: false })
+    }, 2000)
   }
 
   render() {
@@ -28,6 +34,7 @@ export default class App extends React.Component {
           password={this.state.password}
           onChange={(prop, val) => this.exampleOnChange(prop, val)}
           onSubmit={this.exampleOnSubmit.bind(this)}
+          isLoading={this.state.isLoading}
         />
       </View>
     );
