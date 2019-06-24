@@ -6,7 +6,7 @@ const LoginComponent = (props) => {
   return props.isLoading ? (
     <ActivityIndicator />
   ) : (
-    <View>
+    <View style={styles.loginContainer}>
       <TextInput
         placeholder="email"
         value={props.email}
@@ -26,6 +26,12 @@ const LoginComponent = (props) => {
       />
     </View>
   );
+}
+
+const styles = {
+  loginContainer: {
+    width: '75%'
+  }
 }
 
 LoginComponent.propTypes = {
