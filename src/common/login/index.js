@@ -1,11 +1,27 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
 import PropTypes from 'prop-types';
 
 const LoginComponent = (props) => {
   return (
     <View>
-      <Text>this is the login component</Text>
+      <TextInput
+        placeholder="email"
+        value={props.email}
+        onChangeText={(text) => props.onChange('email', text)}
+        autoCapitalize="none"
+      />
+      <TextInput
+        placeholder="password"
+        value={props.password}
+        onChangeText={(text) => props.onChange('password', text)}
+        autoCapitalize="none"
+        secureTextEntry
+      />
+      <Button
+        title="Submit"
+        onPress={() => props.onSubmit()}
+      />
     </View>
   );
 }
